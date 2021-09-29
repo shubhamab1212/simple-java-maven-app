@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage('SCM') {
+        stage('checkout SCM') {
 
             steps {
                 git 'https://github.com/shubhamab1212/simple-java-maven-app.git'
