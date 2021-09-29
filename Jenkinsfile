@@ -21,11 +21,32 @@ pipeline {
         }
 
 
-        stage ('Sonarqube Analysis') {
-            steps {
-                withSonarQubeEnv('Sonarqube') {
-                withMaven(maven : 'maven_3.8.1') {
-                    sh 'mvn clean install package sonar:sonar'
+        
+stage('build && SonarQube analysis') {
+
+
+
+steps {
+
+
+
+withSonarQubeEnv('Sonarqube') {
+
+
+
+
+
+
+
+withMaven(maven:'maven_3.8.1')
+ {
+
+
+
+sh 'mvn clean package sonar:sonar'
+
+
+
                      }
                 }
             }
