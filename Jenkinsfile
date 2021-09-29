@@ -19,37 +19,26 @@ pipeline {
                 }
             }
         }
+        
+        stage('SCM') {
 
+            steps {
+                git 'https://github.com/shubhamab1212/simple-java-maven-app.git'
+
+            }
+        }
 
         
-stage('build && SonarQube analysis') {
-
-
-
-steps {
-
-
-
-withSonarQubeEnv('Sonarqube') {
-
-
-
-
-
-
-
-withMaven(maven:'maven_3.8.1')
- {
-
-
-
-sh 'clean install sonar:sonar'
-
-
-
-                     }
+        stage('build && SonarQube analysis') {
+            
+            steps {
+                withSonarQubeEnv('Sonarqube') {
+                    withMaven(maven:'maven_3.8.1'){
+                        sh 'mvn clean package sonar:sonar'
                 }
             }
         }
+    }
+
     }
 }
