@@ -21,10 +21,10 @@ pipeline {
         }
 
 
-        stage ('Deployment Stage') {
+        stage ('Sonarqube Analysis') {
             steps {
                 withMaven(maven : 'maven_3.8.1') {
-                    sh 'mvn deploy'
+                    sh 'mvn clean install package sonar:sonar'
                 }
             }
         }
