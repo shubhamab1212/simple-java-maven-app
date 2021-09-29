@@ -43,7 +43,7 @@ withMaven(maven:'maven_3.8.1')
 
 
 
-sh 'mvn clean package sonar:sonar'
+sh 'clean install sonar:sonar'
 
 
 
